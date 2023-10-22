@@ -80,3 +80,15 @@ th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+@media screen and (max-width: 480px) {
+  .d-flex {
+    flex-direction: column;
+  }
+  .side-bar {
+    height: 20vh;
+  }
+  .main {
+    width: 100%;
+  }
+}
