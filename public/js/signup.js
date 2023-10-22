@@ -10,6 +10,7 @@ form.addEventListener("submit",async e => {
         });
 
         console.log(resp);
+        alert("Successfully created");
     } catch (error) {
         console.log(error);
     }

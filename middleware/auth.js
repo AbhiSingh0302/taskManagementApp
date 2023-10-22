@@ -49,3 +49,28 @@ exports.authentication = async (req,res,next) => {
         })
     }
 }
+
+exports.authorization = async (req,res,next) => {
+    try {
+        const authHeader = req.headers.authorization;
+        const authArr = authHeader.split(" ");
+        const authToken = authArr[1];
+
+        if(authToken){
+            jwt.verify(authToken,process.env.PRIVATE_KEY,(err,data) => {
+                if(err){
+                    throw new Error("Not Verified");
+                }
+                req.body.id = data.userId;
+                next();
+            })
+        }else{
+            throw new Error("Something went wrong");
+        }
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            error: error.message
+        })
+    }
+} 

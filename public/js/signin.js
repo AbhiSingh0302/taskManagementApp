@@ -10,6 +10,7 @@ form.addEventListener("submit",async e => {
         });
 
         localStorage.setItem("jwt-token",resp.data.token);
+        window.location.replace("/task");
         
     } catch (error) {
         console.log(error);
